@@ -1,14 +1,47 @@
 const Flow = require("./workflow");
 const flow = new Flow();
 
+const login = () => {
+  return new Promise(async (resolve, reject) => {
+    let email = await flow.getItem('email');
+    let password = await flow.getItem('password');
+    if (!email) {
+      reject(new Error("请先输入email"));
+      return;
+    }
+    if (!password) {
+      reject(new Error("请先输入password"));
+      return;
+    }
+    let url = await flow.getItem('url');
+    flow.post(`${url}/api/user/login_by_ldap`, {
+      email,
+      password
+    }).then((res) => {
+      let cookies = res.headers['set-cookie'];
+      let arr = [];
+      if (cookies && cookies.length > 0) {
+        cookies.forEach((item) => {
+          arr.push(item.split(";")[0]);
+        });
+        let Cookie = arr.join("; ");
+        flow.setHeader({ Cookie });
+        resolve();
+      }
+    }).catch((err) => {
+      reject(err);
+    });
+  });
+}
+
 const getProject = (url, id) => {
   return new Promise(async (resolve, reject) => {
     let body = await flow.get(`${url}/api/project/list`, {
       group_id: id,
       page: 1,
       limit: 1000
-    })
-    body = JSON.parse(body);
+    });
+    body = JSON.parse(body.data);
     let list = body.data.list;
     list = list.filter(item => item.add_time);
     resolve(list);
@@ -22,7 +55,7 @@ const getInterface = (url, project_id) => {
       limit: 1000,
       project_id: project_id
     });
-    body = JSON.parse(body);
+    body = JSON.parse(body.data);
     let list = body.data.list;
     setTimeout(() => {
       resolve(list);
@@ -33,7 +66,7 @@ const getInterface = (url, project_id) => {
 const getGroup = (url) => {
   return new Promise(async (resolve, reject) => {
     let body = await flow.get(`${url}/api/group/list`);
-    body = JSON.parse(body);
+    body = JSON.parse(body.data);
     if (body.errcode === 0) {
       let projects = body.data;
       let promiseArr = [];
@@ -112,16 +145,28 @@ const fetchList = async () => {
       }]);
       return;
     }
-    let Cookie = await flow.getItem("cookie");
-    if (!Cookie) {
+    let email = await flow.getItem("email");
+    if (!email) {
       flow.log([{
-        title: "暂无数据：缺少cookie",
+        title: "暂无数据：缺少email",
         icon: flow.icon("error.png")
       }]);
       return;
     }
-    flow.setHeader({ Cookie });
+    let password = await flow.getItem("password");
+    if (!password) {
+      flow.log([{
+        title: "暂无数据：缺少password",
+        icon: flow.icon("error.png")
+      }]);
+      return;
+    }
     try {
+      try {
+        await login();
+      } catch(err) {
+        console.error(err);
+      }
       let lists = await getAllInterface(url);
       flow.log(filterLists(lists));
       flow.setItem("lists", lists);
@@ -145,14 +190,17 @@ const run = () => {
   if (flow.argv.list) {
     showList();
   }
-  if (flow.argv.cookie || flow.argv.url) {
+  if (flow.argv.email || flow.argv.password || flow.argv.url) {
     flow.log([{
       title: flow.input,
       arg: flow.input
     }]);
   }
-  if (flow.argv.addCookie) {
-    flow.setItem("cookie", flow.input);
+  if (flow.argv.addEmail) {
+    flow.setItem("email", flow.input);
+  }
+  if (flow.argv.addPassword) {
+    flow.setItem("password", flow.input);
   }
   if (flow.argv.addUrl) {
     flow.setItem("url", flow.input);

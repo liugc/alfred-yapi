@@ -50,16 +50,18 @@ class Flow {
         protocol = https;
       }
       opt = Object.assign({headers: this.headers}, opt);
+      console.error(opt);
       let req = protocol.request(url, opt, (res) => {
         let rawData = '';
         res.on('data', (chunk) => { rawData += chunk; });
         res.on('end', () => {
-          resolve(rawData, res);
+          res.data = rawData;
+          resolve(res);
         });
       }).on('error', (err) => {
         reject(err);
       });
-      req.write(querystring.stringify(data));
+      req.write(JSON.stringify(data));
       req.end();
     });
   }
@@ -70,7 +72,12 @@ class Flow {
     return this.request(url, {}, opt);
   }
   post(url, data = {}, opt = {}) {
-    opt.method = "POST";
+    Object.assign(opt, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json;charset=UTF-8",
+      }
+    });
     return this.request(url, data, opt);
   }
   getItem(key) {

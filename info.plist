@@ -34,11 +34,37 @@
 				<false/>
 			</dict>
 		</array>
+		<key>3EA9311D-78D1-4F6C-B7EC-8E0508293E53</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>4C4A52A1-FBD5-4710-B06C-3E46BAEE60DA</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>416D7347-01B9-4D2C-895A-9DAE3690CD1B</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
 				<string>A57265FB-7221-42D0-B096-513A0BE91E16</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>58F51E5E-729B-4AD7-A69B-B4DDA12A65A9</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>3EA9311D-78D1-4F6C-B7EC-8E0508293E53</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -94,9 +120,30 @@
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>yai</string>
+	<string>yapi</string>
 	<key>objects</key>
 	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string></string>
+				<key>title</key>
+				<string>成功添加yapi的项目地址</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>070043A6-E4ED-4910-9479-1C2FF9B2E0E4</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -172,82 +219,12 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>lastpathcomponent</key>
-				<false/>
-				<key>onlyshowifquerypopulated</key>
-				<false/>
-				<key>removeextension</key>
-				<false/>
-				<key>text</key>
-				<string></string>
-				<key>title</key>
-				<string>成功添加yapi的项目地址</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.notification</string>
-			<key>uid</key>
-			<string>070043A6-E4ED-4910-9479-1C2FF9B2E0E4</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>alfredfiltersresults</key>
-				<false/>
-				<key>alfredfiltersresultsmatchmode</key>
-				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<true/>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>keyword</key>
-				<string>yapicookie</string>
-				<key>queuedelaycustom</key>
-				<integer>3</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<true/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>runningsubtext</key>
-				<string></string>
-				<key>script</key>
-				<string>/usr/local/bin/node yapi.js --cookie "$1"</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>subtext</key>
-				<string></string>
-				<key>title</key>
-				<string>请输入yapi的cookie</string>
-				<key>type</key>
-				<integer>0</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>416D7347-01B9-4D2C-895A-9DAE3690CD1B</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>/usr/local/bin/node yapi.js --addCookie "$1"</string>
+				<string>/usr/local/bin/node yapi.js --addEmail "$1"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -274,7 +251,7 @@
 				<key>text</key>
 				<string></string>
 				<key>title</key>
-				<string>成功添加yapi的cookie</string>
+				<string>成功添加yapi的email</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.output.notification</string>
@@ -282,6 +259,148 @@
 			<string>33AA8F68-7CE4-4519-91FA-91D74F46E54D</string>
 			<key>version</key>
 			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>yapiemail</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>script</key>
+				<string>/usr/local/bin/node yapi.js --email "$1"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>请输入yapi的email</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>416D7347-01B9-4D2C-895A-9DAE3690CD1B</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string></string>
+				<key>title</key>
+				<string>成功添加yapi的password</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>4C4A52A1-FBD5-4710-B06C-3E46BAEE60DA</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>/usr/local/bin/node yapi.js --addPassword "$1"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>3EA9311D-78D1-4F6C-B7EC-8E0508293E53</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>yapipassword</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>script</key>
+				<string>/usr/local/bin/node yapi.js --password "$1"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>请输入yapi的password</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>58F51E5E-729B-4AD7-A69B-B4DDA12A65A9</string>
+			<key>version</key>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -415,9 +534,9 @@
 		<key>13217BB6-0ADC-4D0D-A471-2200CED358F9</key>
 		<dict>
 			<key>xpos</key>
-			<integer>115</integer>
+			<integer>110</integer>
 			<key>ypos</key>
-			<integer>445</integer>
+			<integer>570</integer>
 		</dict>
 		<key>27C3CA45-C6B6-4E14-8175-CC60F9936F82</key>
 		<dict>
@@ -433,6 +552,13 @@
 			<key>ypos</key>
 			<integer>180</integer>
 		</dict>
+		<key>3EA9311D-78D1-4F6C-B7EC-8E0508293E53</key>
+		<dict>
+			<key>xpos</key>
+			<integer>310</integer>
+			<key>ypos</key>
+			<integer>315</integer>
+		</dict>
 		<key>416D7347-01B9-4D2C-895A-9DAE3690CD1B</key>
 		<dict>
 			<key>xpos</key>
@@ -440,12 +566,26 @@
 			<key>ypos</key>
 			<integer>180</integer>
 		</dict>
-		<key>6ACAD337-8D02-4556-9CE0-2C747027F52C</key>
+		<key>4C4A52A1-FBD5-4710-B06C-3E46BAEE60DA</key>
 		<dict>
 			<key>xpos</key>
 			<integer>525</integer>
 			<key>ypos</key>
-			<integer>385</integer>
+			<integer>315</integer>
+		</dict>
+		<key>58F51E5E-729B-4AD7-A69B-B4DDA12A65A9</key>
+		<dict>
+			<key>xpos</key>
+			<integer>110</integer>
+			<key>ypos</key>
+			<integer>315</integer>
+		</dict>
+		<key>6ACAD337-8D02-4556-9CE0-2C747027F52C</key>
+		<dict>
+			<key>xpos</key>
+			<integer>520</integer>
+			<key>ypos</key>
+			<integer>510</integer>
 		</dict>
 		<key>89FCE87D-C24C-4244-829F-A8B09086251D</key>
 		<dict>
@@ -457,9 +597,9 @@
 		<key>A09BC584-2778-47C8-8E5D-43673027C1A6</key>
 		<dict>
 			<key>xpos</key>
-			<integer>120</integer>
+			<integer>115</integer>
 			<key>ypos</key>
-			<integer>315</integer>
+			<integer>440</integer>
 		</dict>
 		<key>A57265FB-7221-42D0-B096-513A0BE91E16</key>
 		<dict>
